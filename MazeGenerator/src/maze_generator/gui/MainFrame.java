@@ -50,7 +50,7 @@ public class MainFrame extends JFrame {
 	protected MazeStructureReader mazeReader = new MazeStructureReader();
 	
 	public MainFrame() {
-		super("Evolutionary Maze Solving Tool");
+		super("Maze Generation Tool");
 		setSize(1200, 760);
 		init();
 	}
@@ -103,7 +103,7 @@ public class MainFrame extends JFrame {
 	}
 
 	private void performOpenAction() {
-		JFileChooser chooser = new JFileChooser("./data");
+		JFileChooser chooser = new JFileChooser("../Set");
 		chooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
 		chooser.showOpenDialog(this);
 		File file = chooser.getSelectedFile();
@@ -122,7 +122,7 @@ public class MainFrame extends JFrame {
 	}
 
 	private void performSaveAction() {
-		JFileChooser chooser = new JFileChooser("./data");
+		JFileChooser chooser = new JFileChooser("../Set");
 		chooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
 		chooser.showSaveDialog(this);
 		File file = chooser.getSelectedFile();
