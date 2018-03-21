@@ -26,6 +26,7 @@ import javax.swing.KeyStroke;
 
 import maze_generator.gui.maze.MazePanel;
 import maze_generator.gui.tools.MazeEditionPanel;
+import maze_generator.gui.tools.StartingLocationsGenerationPanel;
 import maze_generator.io.MazeStructureReader;
 import maze_generator.io.MazeStructureWriter;
 import maze_generator.maze.MazeStructure;
@@ -38,6 +39,8 @@ public class MainFrame extends JFrame {
 	private MazePanel mazePanel;
 	private JPanel jToolsPanel = new JPanel();
 	private MazeEditionPanel mazeEditionPanel;
+	@SuppressWarnings("unused")
+	private StartingLocationsGenerationPanel startingLocationsPanel;
 	
 	private JMenuBar menubar = new JMenuBar();
 	private JMenu fileMenu = new JMenu("File");
@@ -122,13 +125,13 @@ public class MainFrame extends JFrame {
 	}
 
 	private void performSaveAction() {
-		JFileChooser chooser = new JFileChooser("../Set");
+		JFileChooser chooser = new JFileChooser("../sets");
 		chooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
 		chooser.showSaveDialog(this);
 		File file = chooser.getSelectedFile();
 		if(file != null) {
 			try {
-				FileWriter writer = new FileWriter(file);
+				FileWriter writer = new FileWriter(file + ".mz");
 				mazeWriter.write(maze, writer);
 				writer.close();
 				BufferedImage image=new BufferedImage(mazePanel.getCanvas().getWidth(), mazePanel.getCanvas().getHeight(),BufferedImage.TYPE_INT_RGB);
@@ -156,7 +159,9 @@ public class MainFrame extends JFrame {
 	private void initToolsPanel() {
 		jToolsPanel.setLayout(new BoxLayout(jToolsPanel, BoxLayout.Y_AXIS));
 		mazeEditionPanel = new MazeEditionPanel(mazePanel);
+		startingLocationsPanel = new StartingLocationsGenerationPanel(mazePanel);
 		jToolsPanel.add(mazeEditionPanel);
+		jToolsPanel.add(mazePanel);
 		this.getContentPane().add(jToolsPanel,  BorderLayout.EAST);
 	}
 }

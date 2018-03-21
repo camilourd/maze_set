@@ -5,6 +5,7 @@ import java.awt.Graphics;
 
 import maze_generator.maze.MazeStructure;
 import maze_generator.types.Coordinate;
+import maze_generator.types.Marker;
 
 public class MazeDrawer {
 	
@@ -15,9 +16,11 @@ public class MazeDrawer {
 	  };
 	
 	protected MazeStructureDrawer structureDrawer;
+	protected MarkerDrawer markerDrawer;
 	protected MazeDrawSetting setting;
 	protected int width, height;
 	private MazeStructure structure;
+	private Marker marker;
 	
 	public MazeDrawer(MazeStructure structure, int width, int height) {
 		this.structure = structure;
@@ -26,6 +29,10 @@ public class MazeDrawer {
 		
 	public MazeStructure getStructure() {
 		return this.structure;
+	}
+	
+	public Marker getMarker() {
+		return marker;
 	}
 
 	public void setMazeStructure(MazeStructure structure) {
@@ -37,13 +44,16 @@ public class MazeDrawer {
 		this.width = width;
 		this.height = height;
 		this.setting = new MazeDrawSetting(width, height, structure.xsize, structure.ysize);
-		this.structureDrawer = new MazeStructureDrawer(structure, this.setting);
+		this.structureDrawer = new MazeStructureDrawer(structure, setting);
+		this.marker = new Marker(structure.xsize, structure.ysize);
+		this.markerDrawer = new MarkerDrawer(marker, setting);
 	}
 
 	public void paint(Graphics g) {
 		if(structure != null ){
 			structureDrawer.drawGrid(g, Color.lightGray);
 			structureDrawer.drawStructure(g, Color.blue);
+			markerDrawer.draw(g, Color.BLACK);
 		}
 	}
 	
