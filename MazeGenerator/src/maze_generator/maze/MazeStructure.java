@@ -1,6 +1,7 @@
 package maze_generator.maze;
 
 import maze_generator.types.Coordinate;
+import unalcol.types.collection.vector.Vector;
 
 public class MazeStructure {
 	public int xsize, ysize;
@@ -83,7 +84,16 @@ public class MazeStructure {
 		return structure;
 	}
 
-	public boolean isExit(int x, int y) {
+	public boolean isGoal(int x, int y) {
 		return (data[y][x] & (1 << EXITBIT)) > 0;
+	}
+
+	public Vector<Coordinate> rotate(int x, int y) {
+		Vector<Coordinate> rotations = new Vector<Coordinate>();
+		rotations.add(new Coordinate(x, y));
+		rotations.add(new Coordinate(xsize - y - 1, x));
+		rotations.add(new Coordinate(xsize - x - 1, ysize - y - 1));
+		rotations.add(new Coordinate(y, ysize - x - 1));
+		return rotations;
 	}
 }

@@ -106,7 +106,7 @@ public class MainFrame extends JFrame {
 	}
 
 	private void performOpenAction() {
-		JFileChooser chooser = new JFileChooser("../Set");
+		JFileChooser chooser = new JFileChooser("../dataset");
 		chooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
 		chooser.showOpenDialog(this);
 		File file = chooser.getSelectedFile();
@@ -125,7 +125,7 @@ public class MainFrame extends JFrame {
 	}
 
 	private void performSaveAction() {
-		JFileChooser chooser = new JFileChooser("../sets");
+		JFileChooser chooser = new JFileChooser("../dataset");
 		chooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
 		chooser.showSaveDialog(this);
 		File file = chooser.getSelectedFile();
@@ -161,7 +161,7 @@ public class MainFrame extends JFrame {
 		mazeEditionPanel = new MazeEditionPanel(mazePanel);
 		startingLocationsPanel = new StartingLocationsGenerationPanel(mazePanel);
 		jToolsPanel.add(mazeEditionPanel);
-		jToolsPanel.add(mazePanel);
+		jToolsPanel.add(startingLocationsPanel);
 		this.getContentPane().add(jToolsPanel,  BorderLayout.EAST);
 	}
 }

@@ -58,7 +58,7 @@ public class MazeStructureDrawer {
 	public void drawExits(Graphics g) {
 		for(int x = 0; x < structure.xsize; x++)
 			for(int y = 0; y < structure.ysize; y++)
-				if(structure.isExit(x, y)) {
+				if(structure.isGoal(x, y)) {
 					Coordinate coord = new Coordinate(x, y);
 					if(setting.isDrawable(coord)) {
 						coord = setting.getCanvasCoordinate(coord);
@@ -94,7 +94,7 @@ public class MazeStructureDrawer {
 	public void setExit(Coordinate coord) {
 		Coordinate c = setting.getCoordinate(coord);
 		if(setting.isDrawable(c)) {
-			if(structure.isExit(c.x, c.y))
+			if(structure.isGoal(c.x, c.y))
 				structure.removeExit(c.x, c.y);
 			else
 				structure.addExit(c.x, c.y);

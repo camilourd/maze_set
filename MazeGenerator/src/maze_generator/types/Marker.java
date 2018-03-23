@@ -1,5 +1,7 @@
 package maze_generator.types;
 
+import unalcol.types.collection.vector.Vector;
+
 public class Marker {
 	boolean[][] marked;
 	public int xsize, ysize;
@@ -36,5 +38,18 @@ public class Marker {
 		for(int i = 0; i < marked.length; i++)
 			for(int j = 0; j < marked[i].length; j++)
 				marked[i][j] = true;
+	}
+
+	public boolean isValid(int x, int y) {
+		return 0 <= x && x < xsize && 0 <= y && y < ysize;
+	}
+	
+	public Vector<Coordinate> getMarkedCells() {
+		Vector<Coordinate> coordinates = new Vector<Coordinate>();
+		for(int y = 0; y < marked.length; y++)
+			for(int x = 0; x < marked[y].length; x++)
+				if(marked[y][x])
+					coordinates.add(new Coordinate(x, y));
+		return coordinates;
 	}
 }

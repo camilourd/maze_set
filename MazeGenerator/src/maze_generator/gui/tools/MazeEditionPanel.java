@@ -129,6 +129,7 @@ public class MazeEditionPanel extends ToolPanel {
 		generateButton.addActionListener(new java.awt.event.ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent evt) {
+				maze = mazePanel.getMazeStructure();
 				MazeStructure structure = generator.apply(maze);
 				structure = exitGenenerator.apply(structure);
 				mazePanel.setMazeStructure(structure);

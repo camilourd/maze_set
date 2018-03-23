@@ -6,6 +6,7 @@ import javax.swing.JPanel;
 
 import maze_generator.gui.maze.draw.MazeCanvas;
 import maze_generator.maze.MazeStructure;
+import maze_generator.types.Marker;
 
 public class MazePanel extends JPanel {
 	
@@ -33,6 +34,14 @@ public class MazePanel extends JPanel {
 	
 	public MazeCanvas getCanvas() {
 		return canvas;
+	}
+
+	public MazeStructure getMazeStructure() {
+		return canvas.getMazeStructure();
+	}
+
+	public Marker getMarker() {
+		return canvas.getMarker();
 	}
 
 }

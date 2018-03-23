@@ -10,6 +10,7 @@ import java.awt.event.MouseWheelListener;
 import javax.swing.JPanel;
 
 import maze_generator.maze.MazeStructure;
+import maze_generator.types.Marker;
 
 public class MazeCanvas extends JPanel {
 
@@ -74,6 +75,14 @@ public class MazeCanvas extends JPanel {
 	    super.paintComponent(g);
 	    if(drawer != null)
 	        drawer.paint(g);
+	}
+
+	public MazeStructure getMazeStructure() {
+		return drawer.getStructure();
+	}
+
+	public Marker getMarker() {
+		return drawer.getMarker();
 	}
 
 }

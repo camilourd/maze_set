@@ -22,13 +22,17 @@ public class MazeBuilder {
 	public final static  Shuffle<Integer> shuffle = new Shuffle<Integer>();
 	
 	public static void addWall(MazeStructure structure, int x, int y, int dir) {
-		structure.addWall(x, y, dir);
-		structure.addWall(x + dx[dir], y + dy[dir], inv[dir]);
+		if(structure.isValidLocation(x, y))
+			structure.addWall(x, y, dir);
+		if(structure.isValidLocation(x + dx[dir], y + dy[dir]))
+			structure.addWall(x + dx[dir], y + dy[dir], inv[dir]);
 	}
 	
 	public static void removeWall(MazeStructure structure, int x, int y, int dir) {
-		structure.removeWall(x, y, dir);
-		structure.removeWall(x + dx[dir], y + dy[dir], inv[dir]);
+		if(structure.isValidLocation(x, y))
+			structure.removeWall(x, y, dir);
+		if(structure.isValidLocation(x + dx[dir], y + dy[dir]))
+			structure.removeWall(x + dx[dir], y + dy[dir], inv[dir]);
 	}
 	
 	public static Vector<Movement> createPath(boolean[][] goals, Coordinate start) {
