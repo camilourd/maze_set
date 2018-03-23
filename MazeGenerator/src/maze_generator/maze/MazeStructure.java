@@ -6,15 +6,17 @@ import unalcol.types.collection.vector.Vector;
 public class MazeStructure {
 	public int xsize, ysize;
 	public int data[][];
+	public double connectivity;
 	
 	public static int EXITBIT = 4;
 	public static int FILL = 15;
 	public static int CLEAR = 0;
 	
-	public MazeStructure(int xsize, int ysize) {
+	public MazeStructure(int xsize, int ysize, double connectivity) {
 		this.xsize = xsize;
 		this.ysize = ysize;
-		data = new int[ysize][xsize];
+		this.data = new int[ysize][xsize];
+		this.connectivity = connectivity;
 	}
 
 	public void fill(int value) {
@@ -79,7 +81,7 @@ public class MazeStructure {
 	
 	@Override
 	public MazeStructure clone() {
-		MazeStructure structure = new MazeStructure(xsize, ysize);
+		MazeStructure structure = new MazeStructure(xsize, ysize, connectivity);
 		copy(structure);
 		return structure;
 	}

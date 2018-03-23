@@ -145,7 +145,7 @@ public class MainFrame extends JFrame {
 	}
 	
 	public void initMazePanel() {
-		maze = new MazeStructure(15, 15);
+		maze = new MazeStructure(15, 15, 0);
 		mazePanel = new MazePanel(maze);
 		this.getContentPane().add(mazePanel,  BorderLayout.CENTER);
 	}

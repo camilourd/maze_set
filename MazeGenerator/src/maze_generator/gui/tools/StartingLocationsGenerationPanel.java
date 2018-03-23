@@ -235,7 +235,7 @@ public class StartingLocationsGenerationPanel extends ToolPanel {
 						e.printStackTrace();
 					}
 				}
-				mazePanel.setMazeStructure(new MazeStructure(maxX, maxY));
+				mazePanel.setMazeStructure(new MazeStructure(maxX, maxY, 0));
 				goalsRadio.setSelected(false);
 				rotatedGoalsRadio.setSelected(false);
 				threeCellsRadio.setSelected(false);

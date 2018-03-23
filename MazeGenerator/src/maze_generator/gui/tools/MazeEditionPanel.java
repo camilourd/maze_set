@@ -46,7 +46,7 @@ public class MazeEditionPanel extends ToolPanel {
 		super("Maze Edition Tools", mazePanel);
 		generator = new GeMGA(selectionProbability);
 		exitGenenerator = new ThreeWalls(1);
-		saving = new MazeStructure(maxMazeSize, maxMazeSize);
+		saving = new MazeStructure(maxMazeSize, maxMazeSize, 0);
 		init();
 	}
 	
@@ -132,6 +132,7 @@ public class MazeEditionPanel extends ToolPanel {
 				maze = mazePanel.getMazeStructure();
 				MazeStructure structure = generator.apply(maze);
 				structure = exitGenenerator.apply(structure);
+				structure.connectivity = ((double) probSpinner.getValue()) * 100;
 				mazePanel.setMazeStructure(structure);
 				maze = structure;
 			}
